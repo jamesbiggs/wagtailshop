@@ -8,5 +8,5 @@ This will allow me to expand my knowledge on things like Docker, Wagtail, and ot
 
 # How do I run this project?
 1. Clone this repository
-2. Run `docker-compose up` in the root directory
+2. Run `docker-compose up -d` in the root directory
 3. Visit `localhost:8000` in your browser
