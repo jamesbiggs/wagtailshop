@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "Wagtail Shop"
+version = "0.1.0"
+description = "Shop for Wagtail for my learning"
+authors = ["James Biggs <james.biggs@nationalarchives.gov.uk>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Django = "~5.1"
+wagtail = "~6.3"
+gunicorn = "~23.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
