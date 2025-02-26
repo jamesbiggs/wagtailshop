@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from django.db import models
 
 from wagtail.models import Page, ParentalKey
@@ -11,7 +13,7 @@ class ShopCategoryPage(Page):
     
 
 class ShopProductPage(Page):
-    sku = models.CharField(max_length=255)
+    product_id = models.UUIDField("UUID", unique=True, default=uuid4, editable=False)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.TextField()
     display_image = models.ForeignKey(
@@ -23,7 +25,6 @@ class ShopProductPage(Page):
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel("sku"),
         FieldPanel("price"),
         FieldPanel("description"),
         FieldPanel("display_image"),
