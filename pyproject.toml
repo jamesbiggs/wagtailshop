@@ -7,9 +7,9 @@ authors = ["James Biggs <james.biggs@nationalarchives.gov.uk>"]
 [tool.poetry.dependencies]
 python = "^3.12"
 Django = "~5.1"
-wagtail = "~6.3"
+wagtail = "~6.4"
 gunicorn = "~23.0"
-
+redis = "~5.2"
 
 [build-system]
 requires = ["poetry-core"]
