@@ -1,6 +1,7 @@
 from uuid import uuid4
 
 from django.db import models
+from django.core.cache import cache
 
 from wagtail.models import Page, ParentalKey
 from wagtail.admin.panels import FieldPanel, MultipleChooserPanel
@@ -23,6 +24,14 @@ class ShopProductPage(Page):
         on_delete=models.SET_NULL,
         related_name="+",
     )
+
+    def get_product_images(self):
+        cache_key = f"product_images_{self.pk}"
+        product_images = cache.get(cache_key)
+        if product_images is None:
+            product_images = self.product_images.all()
+            cache.set(cache_key, product_images, timeout=15)
+        return product_images
 
     content_panels = Page.content_panels + [
         FieldPanel("price"),
