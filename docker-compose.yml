@@ -10,3 +10,16 @@ services:
     command: >
       sh -c "python manage.py migrate --noinput &&
              python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - REDIS_URL=redis://:redis@redis:6379
+    depends_on:
+      - redis
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    command: /bin/sh -c "redis-server --requirepass redis"
+    volumes: 
+      - redis:/data
+volumes:
+  redis:
